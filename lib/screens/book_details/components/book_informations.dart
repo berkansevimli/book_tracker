@@ -1,3 +1,4 @@
+import 'package:book_tracker/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../constants.dart';
@@ -63,11 +64,13 @@ class _BookInformationsState extends State<BookInformations> {
               setState(() {
                 isSaved = !isSaved;
               });
+              showSnackBar(context, isSaved ? "Removed" : "Added");
             },
           ),
         ),
-
-        SizedBox(height: getProportionateScreenHeight(40),)
+        SizedBox(
+          height: getProportionateScreenHeight(40),
+        )
       ],
     );
   }
