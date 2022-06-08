@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return CustomNavigationBar(
       iconSize: 30.0,
       unSelectedColor: Color(0xffacacac),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).cardColor,
       items: [
     
         CustomNavigationBarItem(

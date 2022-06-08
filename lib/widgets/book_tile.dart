@@ -1,5 +1,5 @@
+import 'package:book_tracker/constants.dart';
 import 'package:book_tracker/provider/provider.dart';
-import 'package:book_tracker/screens/home/model/book.dart';
 import 'package:book_tracker/size_config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,8 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import '../model/book.dart';
+import '../screens/book_details/book_detailss_screen.dart';
+
 class BookTile extends StatefulWidget {
-  const BookTile({ required ValueKey key, required this.book}) : super(key: key);
+  const BookTile({required ValueKey key, required this.book}) : super(key: key);
   final Book book;
 
   @override
@@ -27,11 +30,14 @@ class _BookTileState extends State<BookTile> {
         .isNotEmpty;
 
     return Padding(
-        key: ValueKey(widget.book.id),
         padding: const EdgeInsets.all(12.0),
         child: ListTile(
           onTap: () {
-            print("object");
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (builder) =>
+                        BookDetailsScreen(book: widget.book, isSaved: isSaved)));
           },
           leading: Container(
             height: SizeConfig.screenWidth * 0.4,
@@ -63,7 +69,7 @@ class _BookTileState extends State<BookTile> {
           ),
           title: Text(
             widget.book.title,
-            style: TextStyle(color: Colors.black, fontSize: 16),
+            style: TextStyle(fontSize: 16),
             overflow: TextOverflow.ellipsis,
           ),
           subtitle: Column(
@@ -93,7 +99,7 @@ class _BookTileState extends State<BookTile> {
                 });
               },
               icon: SvgPicture.asset(
-                isSaved ? "assets/icons/remove.svg" : "assets/icons/save.svg",
+                isSaved ? "assets/icons/remove.svg" : "assets/icons/save.svg", color: kSecondaryColor,
               )),
         ));
   }

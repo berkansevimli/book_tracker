@@ -14,25 +14,25 @@ class MyList extends StatefulWidget {
 class _MyListState extends State<MyList> {
   @override
   Widget build(BuildContext context) {
+    
+    //provider
     final bookProvider = Provider.of<BooksProvider>(context);
 
     return ReorderableListView.builder(
         itemBuilder: (context, index) {
-          return BookTile(book: bookProvider.books[index], key: ValueKey(bookProvider.books[index]));
+          return BookTile(
+              book: bookProvider.books[index],
+              key: ValueKey(bookProvider.books[index]));
         },
         itemCount: bookProvider.books.length,
         onReorder: (oldIndex, newIndex) {
-
-         setState(() {
+          setState(() {
             if (oldIndex < newIndex) {
-            newIndex -= 1;
-          }
-
-          final book = bookProvider.books.removeAt(oldIndex);
-          bookProvider.books.insert(newIndex, book);
-         });
-        
-        
+              newIndex -= 1;
+            }
+            final book = bookProvider.books.removeAt(oldIndex);
+            bookProvider.books.insert(newIndex, book);
+          });
         });
   }
 }

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:book_tracker/screens/home/model/book.dart';
 import 'package:book_tracker/widgets/book_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../constants.dart';
+import '../../../../model/book.dart';
 import '../../../../widgets/swipeable.dart';
 
 class Body extends StatefulWidget {

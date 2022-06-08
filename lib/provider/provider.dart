@@ -1,8 +1,10 @@
+import 'package:book_tracker/model/book.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/home/model/book.dart';
-
 class BooksProvider  extends ChangeNotifier {
+
+  bool isLoading = false;
+  bool get _isLoading => isLoading;
 
   List<Book> _books = [];
 
@@ -15,6 +17,11 @@ class BooksProvider  extends ChangeNotifier {
 
   void removeBook(Book book) {
     _books.remove(book);
+    notifyListeners();
+  }
+
+  setLoading(bool value) {
+    isLoading = value;
     notifyListeners();
   }
   

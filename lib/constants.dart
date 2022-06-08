@@ -33,9 +33,14 @@ final headingStyle = TextStyle(
   height: 1.5,
 );
 final headingStyle2 = TextStyle(
-  fontSize: getProportionateScreenWidth(12),
+  fontSize: getProportionateScreenWidth(18),
   fontWeight: FontWeight.bold,
   color: kPrimaryColor,
+  height: 1.5,
+);
+
+final defaultStyle = TextStyle(
+  fontSize: getProportionateScreenWidth(15),
   height: 1.5,
 );
 
