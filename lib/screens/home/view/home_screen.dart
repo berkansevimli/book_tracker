@@ -1,3 +1,4 @@
+import 'package:book_tracker/screens/home/view/components/body.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,13 +12,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Screen'),
-      ),
-      body: Center(
-        child: const Text('Home Screen'),
-      ),
-    
-    );
+        appBar: AppBar(
+          title: const Text('Home Screen'),
+        ),
+        body: Body());
   }
 }
