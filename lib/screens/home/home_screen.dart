@@ -1,5 +1,6 @@
 import 'package:book_tracker/constants.dart';
 import 'package:book_tracker/enums.dart';
+import 'package:book_tracker/screens/app_settings/app_settings.dart';
 import 'package:book_tracker/screens/home/components/body.dart';
 import 'package:book_tracker/screens/list/view/list_screen.dart';
 import 'package:book_tracker/size_config.dart';
@@ -23,11 +24,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_currentIndex == 0 ? 'Home' : 'My List'),
+        title: Text(_currentIndex == 0
+            ? 'Home'
+            : _currentIndex == 1
+                ? 'My List'
+                : "Settings"),
         elevation: 0.2,
         shadowColor: kSecondaryColor,
       ),
-      body: _currentIndex == 0 ? Body() : MyList(),
+      body: _currentIndex == 0
+          ? Body()
+          : _currentIndex == 1
+              ? MyList()
+              : AppSettings(),
       bottomNavigationBar: buildNavBar(),
     );
   }
@@ -49,6 +58,13 @@ class _HomeScreenState extends State<HomeScreen> {
             color: _currentIndex == 1 ? kSecondaryColor : Color(0xffacacac),
           ),
           title: Text("My List"),
+        ),
+        CustomNavigationBarItem(
+          icon: SvgPicture.asset(
+            "assets/icons/settings.svg",
+            color: _currentIndex == 2 ? kSecondaryColor : Color(0xffacacac),
+          ),
+          title: Text("Settings"),
         ),
       ],
       currentIndex: _currentIndex,

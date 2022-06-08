@@ -16,9 +16,12 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
         create: (context) => BooksProvider(),
         builder: (context, child) {
+          final provider = Provider.of<BooksProvider>(context);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
+            themeMode: provider.themeMode,
             theme: lightTheme(),
+            darkTheme: darkTheme(),
             home: const HomeScreen(),
           );
         });

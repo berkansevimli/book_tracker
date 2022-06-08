@@ -64,7 +64,7 @@ class _BookInformationsState extends State<BookInformations> {
               setState(() {
                 isSaved = !isSaved;
               });
-              showSnackBar(context, isSaved ? "Removed" : "Added");
+              showSnackBar(context, isSaved ? "Added" : "Removed");
             },
           ),
         ),
