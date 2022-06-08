@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_currentIndex == 0 ? 'Home Screen' : 'My List'),
+        title: Text(_currentIndex == 0 ? 'Home' : 'My List'),
         elevation: 0.2,
         shadowColor: kSecondaryColor,
       ),
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         CustomNavigationBarItem(
           icon: SvgPicture.asset("assets/icons/save.svg", color:  _currentIndex == 1 ?  kSecondaryColor:Color(0xffacacac),),
-          title: Text("Saveds"),
+          title: Text("My List"),
         ),
       ],
       currentIndex: _currentIndex,

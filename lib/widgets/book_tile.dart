@@ -20,7 +20,7 @@ class _BookTileState extends State<BookTile> {
   Widget build(BuildContext context) {
     //double screenWidth = SizeConfig.screenWidth;
 
-    //final provider = Provider.of<BooksProvider>(context);
+    final provider = Provider.of<BooksProvider>(context);
 
     return Padding(
         padding: const EdgeInsets.all(12.0),
@@ -78,7 +78,14 @@ class _BookTileState extends State<BookTile> {
             ],
           ),
           trailing: IconButton(
-              onPressed: () async {}, icon: SvgPicture.asset("assets/icons/save.svg",)),
+              onPressed: () async {
+                //provider.removeBook(widget.book);
+                provider.addBook(widget.book);
+                print(provider.books[0].title);
+              },
+              icon: SvgPicture.asset(
+                "assets/icons/save.svg",
+              )),
         ));
   }
 }
