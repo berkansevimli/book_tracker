@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:book_tracker/screens/home/model/book.dart';
+import 'package:book_tracker/widgets/book_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -34,68 +35,7 @@ class _BodyState extends State<Body> {
             child: ListView.builder(
               itemCount: counter,
               itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: 8, left: 8, right: 8),
-                  child: Swipeable(
-                    threshold: MediaQuery.of(context).size.width * 0.2,
-                    onSwipeLeft: () {
-                      print("edit");
-                    },
-                    onSwipeRight: () {
-                      showDialog(
-                          context: context,
-                          builder: (builder) => CupertinoAlertDialog(
-                                title: Text("Delete"),
-                                content: Text(
-                                    "Are you sure you want to delete this user?"),
-                                actions: [
-                                  CupertinoDialogAction(
-                                    child: Text("Cancel"),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  CupertinoDialogAction(
-                                    child: Text("Delete"),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                      //deleteUser(bookResults.data[index].id, context);
-                                    },
-                                  )
-                                ],
-                              ));
-                    },
-                    background: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                      ),
-                      child: ListTile(
-                        title: Text(
-                            "${bookResults.data[index].id.toString()} ${bookResults.data![index].title}"),
-                        subtitle: Text(bookResults.data![index].author),
-                        leading: Icon(Icons.delete, color: Colors.red),
-                        trailing: Icon(Icons.edit, color: Colors.blue),
-                      ),
-                    ),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          color: Colors.white),
-                      child: ListTile(
-                        title: Text(
-                            "${bookResults.data[index].id.toString()} ${bookResults.data![index].title}"),
-                        subtitle: Text(bookResults.data![index].author),
-                        onTap: () {
-                          print(bookResults.data[index].id);
-                        },
-                      ),
-                    ),
-                  ),
-                );
+                return BookTile(book: bookResults.data[index]);
               },
             ),
           )
@@ -113,6 +53,7 @@ class _BodyState extends State<Body> {
             bookResults = result;
           });
         }
+        print(result.data[1].image);
         return result;
       } else {
         print(response.statusCode);
