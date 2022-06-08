@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class BookTile extends StatefulWidget {
-  const BookTile({Key? key, required this.book}) : super(key: key);
+  const BookTile({ required ValueKey key, required this.book}) : super(key: key);
   final Book book;
 
   @override
@@ -22,7 +22,12 @@ class _BookTileState extends State<BookTile> {
 
     final provider = Provider.of<BooksProvider>(context);
 
+    bool isSaved = provider.books
+        .where((book) => book.isbn == widget.book.isbn)
+        .isNotEmpty;
+
     return Padding(
+        key: ValueKey(widget.book.id),
         padding: const EdgeInsets.all(12.0),
         child: ListTile(
           onTap: () {
@@ -80,11 +85,15 @@ class _BookTileState extends State<BookTile> {
           trailing: IconButton(
               onPressed: () async {
                 //provider.removeBook(widget.book);
-                provider.addBook(widget.book);
-                print(provider.books[0].title);
+                isSaved
+                    ? provider.removeBook(widget.book)
+                    : provider.addBook(widget.book);
+                setState(() {
+                  isSaved = !isSaved;
+                });
               },
               icon: SvgPicture.asset(
-                "assets/icons/save.svg",
+                isSaved ? "assets/icons/remove.svg" : "assets/icons/save.svg",
               )),
         ));
   }

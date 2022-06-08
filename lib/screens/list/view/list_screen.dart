@@ -16,10 +16,23 @@ class _MyListState extends State<MyList> {
   Widget build(BuildContext context) {
     final bookProvider = Provider.of<BooksProvider>(context);
 
-    return ListView.builder(
+    return ReorderableListView.builder(
         itemBuilder: (context, index) {
-          return BookTile(book: bookProvider.books[index]);
+          return BookTile(book: bookProvider.books[index], key: ValueKey(bookProvider.books[index]));
         },
-        itemCount: bookProvider.books.length);
+        itemCount: bookProvider.books.length,
+        onReorder: (oldIndex, newIndex) {
+
+         setState(() {
+            if (oldIndex < newIndex) {
+            newIndex -= 1;
+          }
+
+          final book = bookProvider.books.removeAt(oldIndex);
+          bookProvider.books.insert(newIndex, book);
+         });
+        
+        
+        });
   }
 }

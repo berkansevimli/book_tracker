@@ -38,13 +38,17 @@ class _HomeScreenState extends State<HomeScreen> {
       unSelectedColor: Color(0xffacacac),
       backgroundColor: Colors.white,
       items: [
+    
         CustomNavigationBarItem(
           icon: SvgPicture.asset("assets/icons/home.svg",
-              color: _currentIndex == 0 ?  kSecondaryColor:Color(0xffacacac)),
+              color: _currentIndex == 0 ? kSecondaryColor : Color(0xffacacac)),
           title: Text("Home"),
         ),
         CustomNavigationBarItem(
-          icon: SvgPicture.asset("assets/icons/save.svg", color:  _currentIndex == 1 ?  kSecondaryColor:Color(0xffacacac),),
+          icon: SvgPicture.asset(
+            "assets/icons/save.svg",
+            color: _currentIndex == 1 ? kSecondaryColor : Color(0xffacacac),
+          ),
           title: Text("My List"),
         ),
       ],

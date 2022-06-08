@@ -37,6 +37,7 @@ class _BodyState extends State<Body> {
               itemBuilder: (context, index) {
                 return BookTile(
                   book: bookResults.data[index],
+                  key: ValueKey(bookResults.data[index]),
                   
                 );
               },
