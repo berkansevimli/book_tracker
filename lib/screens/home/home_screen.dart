@@ -1,6 +1,6 @@
 import 'package:book_tracker/constants.dart';
 import 'package:book_tracker/enums.dart';
-import 'package:book_tracker/screens/home/view/components/body.dart';
+import 'package:book_tracker/screens/home/components/body.dart';
 import 'package:book_tracker/screens/list/view/list_screen.dart';
 import 'package:book_tracker/size_config.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
@@ -38,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
       unSelectedColor: Color(0xffacacac),
       backgroundColor: Theme.of(context).cardColor,
       items: [
-    
         CustomNavigationBarItem(
           icon: SvgPicture.asset("assets/icons/home.svg",
               color: _currentIndex == 0 ? kSecondaryColor : Color(0xffacacac)),

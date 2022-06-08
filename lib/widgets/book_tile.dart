@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../model/book.dart';
-import '../screens/book_details/book_detailss_screen.dart';
+import '../screens/book_details/book_details_screen.dart';
 
 class BookTile extends StatefulWidget {
   const BookTile({required ValueKey key, required this.book}) : super(key: key);

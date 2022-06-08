@@ -1,5 +1,5 @@
 import 'package:book_tracker/provider/provider.dart';
-import 'package:book_tracker/screens/home/view/home_screen.dart';
+import 'package:book_tracker/screens/home/home_screen.dart';
 import 'package:book_tracker/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
