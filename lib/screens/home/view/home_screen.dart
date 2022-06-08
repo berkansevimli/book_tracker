@@ -1,5 +1,9 @@
+import 'package:book_tracker/constants.dart';
+import 'package:book_tracker/enums.dart';
 import 'package:book_tracker/screens/home/view/components/body.dart';
+import 'package:book_tracker/screens/list/view/list_screen.dart';
 import 'package:book_tracker/size_config.dart';
+import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,13 +14,46 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Home Screen'),
+      appBar: AppBar(
+        title: Text(_currentIndex == 0 ? 'Home Screen' : 'My List'),
+        elevation: 0.2,
+        shadowColor: kSecondaryColor,
+      ),
+      body: _currentIndex == 0 ? Body() : MyList(),
+      bottomNavigationBar: buildNavBar(),
+    );
+  }
+
+  Widget buildNavBar() {
+    return CustomNavigationBar(
+      iconSize: 30.0,
+      selectedColor: kSecondaryColor,
+      strokeColor: kSecondaryColor,
+      unSelectedColor: Color(0xffacacac),
+      backgroundColor: Colors.white,
+      items: [
+        CustomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text("Home"),
         ),
-        body: Body());
+        CustomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          title: Text("Favorites"),
+        ),
+      ],
+      currentIndex: _currentIndex,
+      onTap: (index) {
+        setState(() {
+          _currentIndex = index;
+        });
+      },
+    );
   }
 }

@@ -21,7 +21,7 @@ class _BookTileState extends State<BookTile> {
     //final provider = Provider.of<BooksProvider>(context);
 
     return Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(12.0),
         child: ListTile(
           onTap: () {
             print("object");

@@ -1,0 +1,4 @@
+
+
+
+enum MenuState { home, favorites, }
