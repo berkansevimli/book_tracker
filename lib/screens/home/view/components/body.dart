@@ -35,7 +35,10 @@ class _BodyState extends State<Body> {
             child: ListView.builder(
               itemCount: counter,
               itemBuilder: (context, index) {
-                return BookTile(book: bookResults.data[index]);
+                return BookTile(
+                  book: bookResults.data[index],
+                  
+                );
               },
             ),
           )
