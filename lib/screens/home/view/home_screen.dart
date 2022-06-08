@@ -5,6 +5,7 @@ import 'package:book_tracker/screens/list/view/list_screen.dart';
 import 'package:book_tracker/size_config.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,18 +35,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget buildNavBar() {
     return CustomNavigationBar(
       iconSize: 30.0,
-      selectedColor: kSecondaryColor,
-      strokeColor: kSecondaryColor,
       unSelectedColor: Color(0xffacacac),
       backgroundColor: Colors.white,
       items: [
         CustomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: SvgPicture.asset("assets/icons/home.svg",
+              color: _currentIndex == 0 ?  kSecondaryColor:Color(0xffacacac)),
           title: Text("Home"),
         ),
         CustomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          title: Text("Favorites"),
+          icon: SvgPicture.asset("assets/icons/save.svg", color:  _currentIndex == 1 ?  kSecondaryColor:Color(0xffacacac),),
+          title: Text("Saveds"),
         ),
       ],
       currentIndex: _currentIndex,

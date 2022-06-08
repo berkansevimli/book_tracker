@@ -2,7 +2,9 @@ import 'package:book_tracker/provider/provider.dart';
 import 'package:book_tracker/screens/home/model/book.dart';
 import 'package:book_tracker/size_config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class BookTile extends StatefulWidget {
@@ -76,7 +78,7 @@ class _BookTileState extends State<BookTile> {
             ],
           ),
           trailing: IconButton(
-              onPressed: () async {}, icon: Icon(Icons.favorite_border)),
+              onPressed: () async {}, icon: SvgPicture.asset("assets/icons/save.svg",)),
         ));
   }
 }
