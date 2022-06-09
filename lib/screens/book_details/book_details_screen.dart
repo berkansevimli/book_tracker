@@ -10,7 +10,7 @@ import '../../../size_config.dart';
 import '../../model/book.dart';
 
 class BookDetailsScreen extends StatefulWidget {
-  const BookDetailsScreen({Key? key, required this.book, required this.isSaved})
+  BookDetailsScreen({Key? key, required this.book, required this.isSaved})
       : super(key: key);
   final Book book;
   final bool isSaved;

@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:book_tracker/constants.dart';
 import 'package:book_tracker/provider/provider.dart';
+import 'package:book_tracker/router.gr.dart';
 import 'package:book_tracker/size_config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +10,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../model/book.dart';
-import '../screens/book_details/book_details_screen.dart';
 
 class BookTile extends StatefulWidget {
   const BookTile({required ValueKey key, required this.book}) : super(key: key);
@@ -33,11 +34,7 @@ class _BookTileState extends State<BookTile> {
         padding: const EdgeInsets.all(12.0),
         child: ListTile(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (builder) =>
-                        BookDetailsScreen(book: widget.book, isSaved: isSaved)));
+           context.router.push(BookDetailsScreen( book: widget.book, isSaved: isSaved));
           },
           leading: Container(
             height: SizeConfig.screenWidth * 0.4,
